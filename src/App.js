@@ -9,6 +9,8 @@ import Error from "./pages/errors/Error"
 import NotFound from "./pages/errors/NotFound"
 import Profile from './pages/users/Profile';
 import IsPrivate from './components/auth/IsPrivate';
+import List from './pages/players/List';
+import Details from "./pages/players/Details";
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
     <Route path="/auth/signup" element={ <Signup /> } />
     <Route path="/auth/login" element={ <Login /> } />
     <Route path="/user/profile" element={ <IsPrivate> <Profile /> </IsPrivate> } />
+    <Route path="/players/list" element={ <IsPrivate> <List /> </IsPrivate> } />
+    <Route path="/players/:playerId/details" element={ <IsPrivate> <Details /> </IsPrivate> } />
+
 
 
     {/* error handlers */}
