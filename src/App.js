@@ -26,6 +26,8 @@ function App() {
     <Route path="/user/profile" element={ <IsPrivate> <Profile /> </IsPrivate> } />
     <Route path="/players/list" element={ <IsPrivate> <List /> </IsPrivate> } />
     <Route path="/players/:playerId/details" element={ <IsPrivate> <Details /> </IsPrivate> } />
+    <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
+    <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } />
 
 
 
