@@ -23,11 +23,11 @@ function App() {
     <Route path="/" element={ <Home /> } />
     <Route path="/auth/signup" element={ <Signup /> } />
     <Route path="/auth/login" element={ <Login /> } />
-    <Route path="/user/profile" element={ <IsPrivate> <Profile /> </IsPrivate> } />
+    <Route path="/user/profile/" element={ <IsPrivate> <Profile /> </IsPrivate> } />
     <Route path="/players/list" element={ <IsPrivate> <List /> </IsPrivate> } />
     <Route path="/players/:playerId/details" element={ <IsPrivate> <Details /> </IsPrivate> } />
-    <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
-    <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } />
+    {/* <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
+    <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } /> */}
 
 
 

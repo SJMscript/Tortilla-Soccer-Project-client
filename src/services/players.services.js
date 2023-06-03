@@ -8,8 +8,8 @@ const playerDetailsService = (playerId) => {
     return service.get(`/players/${playerId}/details`)
 }
 
-const playersLikesService = (playerliked) => {
-    return service.post(`/players/${playerliked}/like`)
+const playersLikesService = (playerId) => {
+    return service.post(`/players/${playerId}/like`)
 }
 
 export {

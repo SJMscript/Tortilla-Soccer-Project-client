@@ -9,7 +9,8 @@ function Profile() {
   const [ isLoading, setIsLoading ] = useState(true)
   const [ isLiked, setIsLiked ] = useState(null)
   const navigate = useNavigate()
-  // const { userId } = useParams()
+  const { userId, playerId } = useParams()
+ 
 
   useEffect(() => {
     getProfilesData()
@@ -20,8 +21,8 @@ function Profile() {
 
     try {
       
-      const userProfile = await profileService()
-      const isLike = await playersLikesService()
+      const userProfile = await profileService(userId)
+      const isLike = await playersLikesService(playerId)
       setProfile(userProfile.data)
       setIsLiked(isLike.data)
       setIsLoading(false)
@@ -47,10 +48,17 @@ function Profile() {
 
       <div>
         <h5> Jugadores Favoritos </h5>
+        {isLiked.map((eachLike) => {
+          return (
+          <div key={eachLike._id}>
+            <h5>{eachLike.name}</h5>
+            <p>Age: {eachLike.age}</p>
+            <p>Team: {eachLike.currentTeam}</p>
+            <p>Leg: {eachLike.skillfulLeg}</p>
+          </div>
 
-        <li>
-          {/* <p>{isLiked.name}</p> */}
-        </li>
+          )
+        })}
 
       </div>
 
