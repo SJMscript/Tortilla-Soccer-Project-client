@@ -28,7 +28,7 @@ function App() {
     <Route path="/user/profile" element={ <IsPrivate> <Profile /> </IsPrivate> } />
     <Route path="/players/list" element={ <IsPrivate> <List /> </IsPrivate> } />
     <Route path="/players/:playerId/details" element={ <IsPrivate> <Details /> </IsPrivate> } />
-    <Route path="/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } />
+    <Route path="/top11/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } />
     {/* <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
     <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } /> */}
 

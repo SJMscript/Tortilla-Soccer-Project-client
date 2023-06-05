@@ -28,7 +28,7 @@ function Navbar() {
 
     {isLoggedIn && <Link to="/user/profile">Profile</Link>}
     {isLoggedIn && <Link to="/players/list">Players List</Link>}
-    {isLoggedIn && <Link to="/createTop11">Top 11</Link>}
+    {isLoggedIn && <Link to="/top11/createTop11">Top 11</Link>}
     {isLoggedIn && <Link to="/players/new-player">Create Player</Link>}
     {isLoggedIn && <Link to="/createTop11">Stadiums</Link>}
     {isLoggedIn && <Link to="/createTop11">Hall of Fame</Link>}
