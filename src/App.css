@@ -5,3 +5,66 @@
 a {
   margin: 20px
 }
+
+/* Estilos para los jugadores */
+.player-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-card h5 {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.player-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.player-card button {
+  margin-top: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos para los top 11 jugadores */
+.top11-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top11-card li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.top11-card p {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.top11-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
