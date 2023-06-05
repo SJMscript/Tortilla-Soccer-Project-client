@@ -13,52 +13,51 @@ function Details() {
 
     const { playerId } = useParams()
 
-    useEffect(() => {
+     useEffect(() => {
         getPlayerDetailData()
-    }, [])
-
+    }, []);
+ 
+    
     const getPlayerDetailData = async () => {
-
-
-
+        
+        
+        
         try {
             
             
-
-            const response = await playerDetailsService(playerId)
-            console.log(response, "response")
-            setPlayerDetails(response.data)
+            
+            const OnePlayerDetails = await playerDetailsService(playerId)
+            console.log("response OnePlayerDetails", OnePlayerDetails )
+            setPlayerDetails(OnePlayerDetails.data)
             setIsLoading(false)
-         
+            console.log("playerDetails", playerDetails)
         } catch (error) {
             console.error(error)
         }
 
     }
 
-      if (isLoading) {
-          return  <h3>Loading...</h3>
-        
+    if (isLoading) {
+        return <h3>Loading...</h3>
       }
-
-
-  return (
-    <div>
-
-        <h1>Player Details</h1>
-
+      
+      return (
         <div>
-            <h4>{playerDetails.name}</h4>
-            <br />
-            <p>{playerDetails.age}</p>
-            <hr />
-            <p>{playerDetails.currentTeam}</p>
-            <p>{playerDetails.skillfulLeg}</p>
-
+          <h1>Player Details</h1>
+      
+          {playerDetails ? (
+            <div>
+              <h4>{playerDetails.name}</h4>
+              <br />
+              <p>{playerDetails.age}</p>
+              <hr />
+              <p>{playerDetails.currentTeam}</p>
+              <p>{playerDetails.skillfulLeg}</p>
+            </div>
+          ) : (
+            <h3>No player details found</h3>
+          )}
         </div>
-
-    </div>
-  )
-}
+      );}
 
 export default Details

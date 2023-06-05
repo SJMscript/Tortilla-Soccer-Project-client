@@ -30,9 +30,8 @@ function CreatePlayer() {
     const handleSubmit = async (e) => {
         e.preventDefault()
     
-        setIsLoading(true) // muestra al usuario un spinner mientras se procesa la info
+        setIsLoading(true) // show spinner if loading
     
-        // ... Contactar al servidor y añadir un nuevo piso.
         try {
           
           const createPlayer = await createPlayerService({
@@ -45,7 +44,7 @@ function CreatePlayer() {
             currentTeam: playerCurrentTeam
           })
     
-          // Una vez que creamos el player qué hacemos? redireccionamos a /players/list
+          // redirect to players list page
           navigate("/players/list")
     
         } catch (error) {
@@ -53,17 +52,6 @@ function CreatePlayer() {
           navigate("/error")
         }
       }
-    
-       /* if ( isLoading === true ) {
-       return (
-           <div className="spinner-container">
-    
-           <RingLoader color="red" />
-    
-           </div>
-         )
-       }  */
-    
     
       return (
         <div className="AddPlayerPage">

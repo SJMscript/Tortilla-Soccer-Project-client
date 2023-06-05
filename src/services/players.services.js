@@ -12,6 +12,10 @@ const playersLikesService = (playerId) => {
     return service.post(`/players/${playerId}/like`)
 }
 
+const playersDislikesService = (playerId) => {
+    return service.post(`/players/${playerId}/unlike`)
+}
+
 const createPlayerService = () => {
     return service.get("/players/new-player")
 }
@@ -20,5 +24,6 @@ export {
     playersListService,
     playerDetailsService,
     playersLikesService,
-    createPlayerService
+    createPlayerService,
+    playersDislikesService
 } 
