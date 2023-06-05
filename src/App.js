@@ -11,6 +11,8 @@ import Profile from './pages/users/Profile';
 import IsPrivate from './components/auth/IsPrivate';
 import List from './pages/players/List';
 import Details from "./pages/players/Details";
+// import Top11 from './top11/Top11';
+import Top11Players from './pages/top11players/Top11Players';
 
 function App() {
   return (
@@ -23,9 +25,10 @@ function App() {
     <Route path="/" element={ <Home /> } />
     <Route path="/auth/signup" element={ <Signup /> } />
     <Route path="/auth/login" element={ <Login /> } />
-    <Route path="/user/profile/" element={ <IsPrivate> <Profile /> </IsPrivate> } />
+    <Route path="/user/profile" element={ <IsPrivate> <Profile /> </IsPrivate> } />
     <Route path="/players/list" element={ <IsPrivate> <List /> </IsPrivate> } />
     <Route path="/players/:playerId/details" element={ <IsPrivate> <Details /> </IsPrivate> } />
+    <Route path="/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } />
     {/* <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
     <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } /> */}
 
