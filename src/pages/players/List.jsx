@@ -47,10 +47,16 @@ function List() {
         <h3>Lista de jugadores</h3>
 
         {playersList.map((eachPlayer) => {
-
             return (
                 <div key={eachPlayer._id}>
-                    <li>{eachPlayer.name}{eachPlayer.imageUrl}{eachPlayer.postion}</li>
+                    <li>
+                    <h3>{eachPlayer.name}, {eachPlayer.age}</h3>
+                    <p>Position: {eachPlayer.playerPosition}</p>
+                    <p>Skillful Leg: {eachPlayer.skillfulLeg}</p>
+                    <p>{eachPlayer.imageUrl}</p>
+                    <p>Current Team: {eachPlayer.currentTeam}</p>
+                    <p>Market Value: {eachPlayer.marketValue}</p>
+                    </li>
                 </div>
             )
 

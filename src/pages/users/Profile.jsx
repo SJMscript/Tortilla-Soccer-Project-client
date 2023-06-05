@@ -9,7 +9,7 @@ function Profile() {
   const [ isLoading, setIsLoading ] = useState(true)
   const [ isLiked, setIsLiked ] = useState(null)
   const navigate = useNavigate()
-  // const { userId } = useParams()
+  const { userId } = useParams()
 
   useEffect(() => {
     getProfilesData()
