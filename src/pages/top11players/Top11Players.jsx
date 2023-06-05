@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { top11ListService } from "../../services/top11.services"
+//import { createTop}
 
 
 function Top11Players() {
@@ -46,10 +47,14 @@ function Top11Players() {
         <h3>Our 11 choosen</h3>
 
         {top11PlayersList.map((eachPlayer) => {
-
+            console.log(eachPlayer)
             return (
                 <div key={eachPlayer._id}>
-                    <li>{eachPlayer.name}{eachPlayer.imageUrl}{eachPlayer.postion}</li>
+                    <li>
+                    <h3>{eachPlayer.name}</h3>
+                    <p>{eachPlayer.imageUrl}</p>
+                    <p>{eachPlayer.playerPosition}</p>
+                    </li>
                 </div>
             )
 
