@@ -16,8 +16,8 @@ const playersDislikesService = (playerId) => {
     return service.post(`/players/${playerId}/unlike`)
 }
 
-const createPlayerService = () => {
-    return service.get("/players/new-player")
+const createPlayerService = (createData) => {
+    return service.post("/players/new-player", createData)
 }
 
 export {

@@ -8,15 +8,15 @@ function CreatePlayer() {
 
     const navigate = useNavigate();
 
-    const [ playerName, setPlayerName] = useState(null)
+    const [ playerName, setPlayerName] = useState("")
     const [ playerAge, setPlayerAge] = useState(0)
-    const [ playerPosition, setPlayerPosition] = useState(null)
-    const [ playerSkillfulLeg, setPlayerSkillfulLeg] = useState(null)
-    const [ playerImageUrl, setPlayerImageUrl] = useState(null)
-    const [ playerMarketValue, setPlayerMarketValue] = useState(null)
-    const [ playerCurrentTeam, setPlayerCurrentTeam] = useState(null)
+    const [ playerPosition, setPlayerPosition] = useState("")
+    const [ playerSkillfulLeg, setPlayerSkillfulLeg] = useState("")
+    const [ playerImageUrl, setPlayerImageUrl] = useState("")
+    const [ playerMarketValue, setPlayerMarketValue] = useState(0)
+    const [ playerCurrentTeam, setPlayerCurrentTeam] = useState("")
 
-    const [ isLoading, setIsLoading ] = useState(true)
+    //const [ isLoading, setIsLoading ] = useState(true)
 
     const handleNameChange =  (e) => setPlayerName(e.target.value)
     const handleAgeChange =  (e) => setPlayerAge(e.target.value)
@@ -30,20 +30,19 @@ function CreatePlayer() {
     const handleSubmit = async (e) => {
         e.preventDefault()
     
-        setIsLoading(true) // show spinner if loading
     
         try {
           
           const createPlayer = await createPlayerService({
             name: playerName,
             age: playerAge,
-            position: playerPosition,
+            playerPosition: playerPosition,
             skillfulLeg: playerSkillfulLeg,
             imageUrl: playerImageUrl,
             marketValue: playerMarketValue,
             currentTeam: playerCurrentTeam
           })
-    
+          console.log("response", createPlayer)
           // redirect to players list page
           navigate("/players/list")
     
@@ -57,7 +56,7 @@ function CreatePlayer() {
         <div className="AddPlayerPage">
           <h3>Add a new Player</h3>
     
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} >
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -92,7 +91,7 @@ function CreatePlayer() {
             <br />
             <label htmlFor="imageUrl">Image</label>
             <input
-              type="text"
+              type="file"
               name="imageUrl"
               onChange={handleImageUrlChange}
               value={playerImageUrl}
@@ -118,9 +117,9 @@ function CreatePlayer() {
     
             
     
-            <button type="submit" disabled={isLoading}>Add Here!</button>
+            <button type="submit" >Add Here!</button>
     
-            {isLoading === true && <RingLoader className="spinner-container" color="red" />}
+            {/* {isLoading === true && <RingLoader className="spinner-container" color="red" />} */}
     
           </form>
         </div>

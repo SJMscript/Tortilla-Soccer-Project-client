@@ -20,11 +20,7 @@ function Details() {
     
     const getPlayerDetailData = async () => {
         
-        
-        
         try {
-            
-            
             
             const OnePlayerDetails = await playerDetailsService(playerId)
             console.log("response OnePlayerDetails", OnePlayerDetails )
@@ -50,7 +46,7 @@ function Details() {
               <h4>{playerDetails.name}</h4>
               <br />
               <p>{playerDetails.age}</p>
-              <hr />
+              <br />
               <p>{playerDetails.currentTeam}</p>
               <p>{playerDetails.skillfulLeg}</p>
             </div>
