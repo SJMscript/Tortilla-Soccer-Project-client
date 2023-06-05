@@ -56,7 +56,7 @@ function CreatePlayer() {
         <div className="AddPlayerPage">
           <h3>Add a new Player</h3>
     
-          <form onSubmit={handleSubmit} >
+          <form onSubmit={handleSubmit}   encType="multipart/form-data">
             <label htmlFor="name">Name</label>
             <input
               type="text"

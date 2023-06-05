@@ -74,8 +74,8 @@ function Profile() {
       const userProfile = await profileService();
       setProfile(userProfile.data);
       // Obtener la lista de jugadores que le gustan al usuario
-      const likedPlayersResponse = await playersLikesService();
-      setLikedPlayers(likedPlayersResponse.data);
+      // const likedPlayersResponse = await playersLikesService();
+      // setLikedPlayers(likedPlayersResponse.data);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -100,6 +100,7 @@ function Profile() {
             <p>Age: {player.age}</p>
             <p>Team: {player.team}</p>
             <p>Leg: {player.skillfulLeg}</p>
+            <p>Leg: {player.likedPlayers}</p>
           </div>
         ))}
       </div>
