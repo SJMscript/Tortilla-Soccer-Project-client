@@ -31,7 +31,7 @@ function Top11Players() {
       <h3>Our 11 chosen</h3>
 
       {top11PlayersList.map((eachPlayer) => (
-        <div key={eachPlayer._id}>
+        <div className="top11-card" key={eachPlayer._id}>
           <li>
             <p>{eachPlayer.name}</p>
             <p>{eachPlayer.imageUrl}</p>
@@ -43,7 +43,7 @@ function Top11Players() {
       <h3>All Players</h3>
 
       {playersList.map((eachPlayer) => (
-        <div key={eachPlayer._id}>
+        <div className="player-card" key={eachPlayer._id}>
           <h5>{eachPlayer.name}</h5>
           <button onClick={() => addToTop11PlayersList(eachPlayer)}>Add to Top 11</button>
         </div>
