@@ -63,7 +63,11 @@ function List() {
               <h3>{eachPlayer.name}</h3>
             </Link>
             <p>Position: {eachPlayer.playerPosition}</p>
-            <p>{eachPlayer.imageUrl}</p>
+            {eachPlayer.imageUrl && (
+              <div>
+                <img src={eachPlayer.imageUrl} alt="Player" width={200} />
+              </div>
+            )}
             {likedPlayers.includes(eachPlayer._id) ? (
               <button
                 onClick={() => handleRemoveFromLikedPlayers(eachPlayer._id)}
