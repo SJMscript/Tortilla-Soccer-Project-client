@@ -52,4 +52,8 @@
   );
 }
 
+<<<<<<< HEAD
 export default Top11Players
+=======
+export default Top11Players
+>>>>>>> dev
