@@ -20,10 +20,15 @@ const createPlayerService = (createData) => {
     return service.post("/players/new-player", createData)
 }
 
+const deletePlayerService = (playerId) => {
+    return service.delete(`/players/${playerId}/unlike`)
+}
+
 export {
     playersListService,
     playerDetailsService,
     playersLikesService,
     createPlayerService,
-    playersDislikesService
+    playersDislikesService,
+    deletePlayerService
 } 
