@@ -10,12 +10,12 @@ function Details() {
   const [imageUrl, setImageUrl] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const navigate = useNavigate();
-  const  {playerId}  = useParams();
+  const { playerId } = useParams();
   console.log(playerId, "a");
 
   useEffect(() => {
     getPlayerDetailData();
-    console.log(playerId, "linea18")
+    console.log(playerId)
   }, []);
 
   const getPlayerDetailData = async () => {
@@ -30,6 +30,7 @@ function Details() {
       setIsLoading(false); 
     }
   };
+
   const handleFileUpload = async (event) => {
     if (!event.target.files[0]) {
       return;
