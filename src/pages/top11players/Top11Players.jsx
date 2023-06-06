@@ -22,7 +22,13 @@ function Top11Players() {
   };
 
   const addToTop11PlayersList = (player) => {
-    setTop11PlayersList((prevList) => [...prevList, player]);
+    if (top11PlayersList.length < 11 && !isPlayerInTop11(player)) {
+      setTop11PlayersList((prevList) => [...prevList, player]);
+    }
+  };
+
+  const isPlayerInTop11 = (player) => {
+    return top11PlayersList.some((p) => p._id === player._id);
   };
 
   return (
@@ -49,9 +55,11 @@ function Top11Players() {
         <div className="player-card" key={eachPlayer._id}>
           <h5>{eachPlayer.name}</h5>
           <p>{eachPlayer.position}</p>
-          <button onClick={() => addToTop11PlayersList(eachPlayer)}>
-            Add to Top 11
-          </button>
+          {!isPlayerInTop11(eachPlayer) && (
+            <button onClick={() => addToTop11PlayersList(eachPlayer)}>
+              Add to Top 11
+            </button>
+          )}
         </div>
       ))}
     </div>
