@@ -20,8 +20,13 @@ const createPlayerService = (createData) => {
     return service.post("/players/new-player", createData)
 }
 
+<<<<<<< HEAD
 const addCommentService = (playerId, comment) => {
     return service.post(`/players/${playerId}/details`, comment)
+=======
+const deletePlayerService = (playerId) => {
+    return service.delete(`/players/${playerId}/unlike`)
+>>>>>>> 8ddf6fe9b90a2eb55bf8feaaad7c91231d976b5f
 }
 
 export {
@@ -30,5 +35,9 @@ export {
     playersLikesService,
     createPlayerService,
     playersDislikesService,
+<<<<<<< HEAD
     addCommentService
+=======
+    deletePlayerService
+>>>>>>> 8ddf6fe9b90a2eb55bf8feaaad7c91231d976b5f
 } 

@@ -15,6 +15,8 @@ import Details from "./pages/players/Details";
 import Top11Players from './pages/top11players/Top11Players';
 import CreatePlayer from './pages/players/CreatePlayer';
 import Footer from './components/Footer';
+import DeletePlayer from './pages/players/DeletePlayer';
+import EditPlayer from './pages/players/EditPlayer';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
     <Route path="/top11/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } />
     <Route path="/players/new-player" element={ <IsPrivate> <CreatePlayer /> </IsPrivate> } />
     <Route path="/players/:playerId/details" element={ <IsPrivate> <Details /> </IsPrivate> } />
+    <Route path="/players/:playerId/delete" element={ <IsPrivate> <DeletePlayer /> </IsPrivate> } />
+    <Route path="/players/:playerId/edit" element={ <IsPrivate> <EditPlayer /> </IsPrivate> } />
     <Route path="/top11/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } />
     {/* <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
     <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } /> */}
