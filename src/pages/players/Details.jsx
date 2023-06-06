@@ -1,21 +1,14 @@
 import { useState, useEffect } from "react";
 import { playerDetailsService } from "../../services/players.services";
-import { useParams, useNavigate } from "react-router-dom";
-import { RingLoader } from "react-spinners";
-import { uploadImageService } from "../../services/upload.services";
+import { useParams } from "react-router-dom";
 
 function Details() {
   const [playerDetails, setPlayerDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [imageUrl, setImageUrl] = useState(null);
-  const [isUploading, setIsUploading] = useState(false);
-  const navigate = useNavigate();
   const { playerId } = useParams();
-  console.log(playerId, "a");
 
   useEffect(() => {
     getPlayerDetailData();
-    console.log(playerId)
   }, []);
 
   const getPlayerDetailData = async () => {
@@ -28,26 +21,6 @@ function Details() {
     } catch (error) {
       console.log(error);
       setIsLoading(false); 
-    }
-  };
-
-  const handleFileUpload = async (event) => {
-    if (!event.target.files[0]) {
-      return;
-    }
-
-    setIsUploading(true);
-
-    const uploadData = new FormData();
-    uploadData.append("image", event.target.files[0]);
-
-    try {
-      const response = await uploadImageService(uploadData);
-      setImageUrl(response.data.imageUrl);
-      setIsUploading(false);
-    } catch (error) {
-      console.log(error);
-      navigate("/error");
     }
   };
 
@@ -69,21 +42,11 @@ function Details() {
           <p>{playerDetails.skillfulLeg}</p>
           <br />
 
-          <div>
-            <label>Image: </label>
-            <input
-              type="file"
-              name="image"
-              onChange={handleFileUpload}
-              disabled={isUploading}
-            />
-            {isUploading ? <h3>... uploading image</h3> : null}
-            {imageUrl ? (
-              <div>
-                <img src={imageUrl} alt="img" width={200} />
-              </div>
-            ) : null}
-          </div>
+          {playerDetails.imageUrl && (
+            <div>
+              <img src={playerDetails.imageUrl} alt="Player" width={200} />
+            </div>
+          )}
         </div>
       ) : (
         <h3>No player details found</h3>
