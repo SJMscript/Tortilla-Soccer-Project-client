@@ -91,3 +91,7 @@ a {
   justify-content: space-evenly;
   text-align: center;
 }
+
+.container-main-div {
+  margin-bottom: 80px;
+}

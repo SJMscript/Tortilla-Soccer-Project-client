@@ -21,7 +21,7 @@ function App() {
     <div className="App">
  
     <Navbar />
-
+    <div className='container-main-div'>
     <Routes>
 
     <Route path="/" element={ <Home /> } />
@@ -44,6 +44,8 @@ function App() {
     <Route  path="*" element={ <NotFound /> }/>
 
     </Routes>
+
+    </div>
 
     <Footer/>
 
