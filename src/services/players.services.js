@@ -20,10 +20,15 @@ const createPlayerService = (createData) => {
     return service.post("/players/new-player", createData)
 }
 
+const addCommentService = (playerId, comment) => {
+    return service.post(`/players/${playerId}/details`, comment)
+}
+
 export {
     playersListService,
     playerDetailsService,
     playersLikesService,
     createPlayerService,
-    playersDislikesService
+    playersDislikesService,
+    addCommentService
 } 

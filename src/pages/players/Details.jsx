@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { playerDetailsService } from "../../services/players.services";
+import { addCommentService } from "../../services/players.services";
 import { useParams } from "react-router-dom";
 
 function Details() {
   const [playerDetails, setPlayerDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [comment, setComment] = useState("");
   const { playerId } = useParams();
 
   useEffect(() => {
@@ -20,7 +22,24 @@ function Details() {
       console.log("playerDetails", OnePlayerDetails.data);
     } catch (error) {
       console.log(error);
-      setIsLoading(false); 
+      setIsLoading(false);
+    }
+  };
+
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+
+  const submitComment = async (event) => {
+    event.preventDefault();
+
+    try {
+      await addCommentService(playerId, {comment});
+      // Actualizar los detalles del jugador para mostrar el nuevo comentario
+      getPlayerDetailData();
+      setComment(""); // Limpiar el campo del formulario después de enviar el comentario
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -51,6 +70,15 @@ function Details() {
       ) : (
         <h3>No player details found</h3>
       )}
+
+      <form onSubmit={submitComment}>
+        <textarea
+          value={comment}
+          onChange={handleCommentChange}
+          placeholder="Escribe tu comentario aquí"
+        ></textarea>
+        <button type="submit">Comment</button>
+      </form>
     </div>
   );
 }
