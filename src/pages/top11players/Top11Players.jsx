@@ -52,3 +52,4 @@
   );
 }
 
+export default Top11Players
