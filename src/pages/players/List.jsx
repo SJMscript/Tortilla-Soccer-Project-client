@@ -59,7 +59,7 @@ function List() {
       {playersList.map((eachPlayer) => (
         <div key={eachPlayer._id}>
           <li>
-            <Link to="">
+            <Link to="/players/:playerId/details">
               <h3>{eachPlayer.name}</h3>
             </Link>
             <p>Position: {eachPlayer.playerPosition}</p>
