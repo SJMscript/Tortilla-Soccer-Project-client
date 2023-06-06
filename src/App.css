@@ -68,3 +68,26 @@ a {
   height: auto;
   margin-bottom: 10px;
 }
+
+.navbar-div {
+  background-color: wheat;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+
+.footer-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: wheat;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}

@@ -22,7 +22,7 @@ function Navbar() {
 
 
   return (
- <nav>
+ <nav className="navbar-div">
 
     <Link to="/">Home</Link>
 

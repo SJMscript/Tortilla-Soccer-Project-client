@@ -14,6 +14,7 @@ import Details from "./pages/players/Details";
 // import Top11 from './top11/Top11';
 import Top11Players from './pages/top11players/Top11Players';
 import CreatePlayer from './pages/players/CreatePlayer';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
     <Route  path="*" element={ <NotFound /> }/>
 
     </Routes>
+
+    <Footer/>
 
     </div>
   );
