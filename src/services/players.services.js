@@ -28,6 +28,10 @@ const deletePlayerService = (playerId) => {
     return service.delete(`/players/${playerId}/unlike`)
 }
 
+const getPlayerCommentsService = (playerId) => {
+    return service.get(`/players/${playerId}/comments`);
+}
+
 export {
     playersListService,
     playerDetailsService,
@@ -35,5 +39,6 @@ export {
     createPlayerService,
     playersDislikesService,
     addCommentService,
-    deletePlayerService
+    deletePlayerService,
+    getPlayerCommentsService
 } 
