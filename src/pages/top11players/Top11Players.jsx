@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { playersListService } from "../../services/players.services";
 import { useNavigate } from "react-router-dom";
+import { createTop11Service } from "../../services/top11Players.services";
 
 function Top11Players() {
   const [playersList, setPlayersList] = useState([]);
@@ -25,7 +26,7 @@ function Top11Players() {
     }
   };
 
-  const addToTop11PlayersList = (player) => {
+/*   const addToTop11PlayersList = (player) => {
     if (top11PlayersList.length < 11 && !isPlayerInTop11(player)) {
       if (player.playerPosition === "goalkeeper" && goalkeeperCount >= 1) {
         return;
@@ -52,7 +53,50 @@ function Top11Players() {
         setForwardCount((count) => count + 1);
       }
     }
+  }; */
+
+  const addToTop11PlayersList = async (player) => {
+    if (top11PlayersList.length < 11 && !isPlayerInTop11(player)) {
+      if (player.playerPosition === "goalkeeper" && goalkeeperCount >= 1) {
+        return;
+      }
+      if (player.playerPosition === "defense" && defenseCount >= 4) {
+        return;
+      }
+      if (player.playerPosition === "midfielder" && midfielderCount >= 3) {
+        return;
+      }
+      if (player.playerPosition === "forward" && forwardCount >= 3) {
+        return;
+      }
+  
+      try {
+        // Llamada al servicio para guardar el Top11 elegido
+        const response = await createTop11Service({
+          player: player._id,
+          position: player.playerPosition,
+        });
+        console.log(response, "respuesta del servicio");
+  
+        // Agregar el Top11 a la lista
+        setTop11PlayersList((prevList) => [...prevList, response.data]);
+        console.log(top11PlayersList, "que estamos almacenando?")
+  
+        if (player.playerPosition === "goalkeeper") {
+          setGoalkeeperCount((count) => count + 1);
+        } else if (player.playerPosition === "defense") {
+          setDefenseCount((count) => count + 1);
+        } else if (player.playerPosition === "midfielder") {
+          setMidfielderCount((count) => count + 1);
+        } else if (player.playerPosition === "forward") {
+          setForwardCount((count) => count + 1);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
+  
 
   const isPlayerInTop11 = (player) => {
     return top11PlayersList.some((p) => p._id === player._id);
