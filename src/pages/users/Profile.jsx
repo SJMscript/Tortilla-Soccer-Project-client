@@ -31,6 +31,7 @@ function Profile() {
 
   return (
     <div>
+      <img src={profile.profileImg} alt="profileImg" width={300} />
       <h4>Username: {profile.username}</h4>
       <p>E-mail: {profile.email}</p>
 
