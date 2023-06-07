@@ -23,6 +23,10 @@ const createPlayerService = (createData) => {
 const addCommentService = (playerId, comment) => {
     return service.post(`/players/${playerId}/details`, comment)
 }
+    
+const deletePlayerService = (playerId) => {
+    return service.delete(`/players/${playerId}/unlike`)
+}
 
 export {
     playersListService,
@@ -30,5 +34,6 @@ export {
     playersLikesService,
     createPlayerService,
     playersDislikesService,
-    addCommentService
+    addCommentService,
+    deletePlayerService
 } 
