@@ -21,7 +21,7 @@ const createPlayerService = (createData) => {
 }
 
 const deletePlayerService = (playerId) => {
-    return service.delete(`/players/${playerId}/unlike`)
+    return service.delete(`/players/${playerId}/delete`)
 }
 
 export {
