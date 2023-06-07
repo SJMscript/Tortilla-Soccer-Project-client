@@ -1,59 +1,108 @@
-//import axios from "axios"
-import { useState, useEffect } from "react"
-import { playerDetailsService } from "../../services/players.services"
-import { useParams } from "react-router-dom"
-
+import { useState, useEffect } from "react";
+import { playerDetailsService } from "../../services/players.services";
+import { addCommentService } from "../../services/players.services";
+import { useParams } from "react-router-dom";
+import { getPlayerCommentsService } from "../../services/players.services";
 
 function Details() {
+  const [playerDetails, setPlayerDetails] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
+  const { playerId } = useParams();
 
+  useEffect(() => {
+    getPlayerDetailData();
+  }, []);
 
-
-    const [ playerDetails, setPlayerDetails ] = useState(null)
-    const [ isLoading, setIsLoading ] = useState(true)
-
-    const { playerId } = useParams()
-
-     useEffect(() => {
-        getPlayerDetailData()
-    }, []);
- 
-    
-    const getPlayerDetailData = async () => {
-        
-        try {
-            
-            const OnePlayerDetails = await playerDetailsService(playerId)
-            console.log("response OnePlayerDetails", OnePlayerDetails )
-            setPlayerDetails(OnePlayerDetails.data)
-            setIsLoading(false)
-            console.log("playerDetails", playerDetails)
-        } catch (error) {
-            console.error(error)
-        }
-
+  const getPlayerDetailData = async () => {
+    try {
+      const OnePlayerDetails = await playerDetailsService(playerId);
+      console.log("response OnePlayerDetails", OnePlayerDetails);
+      setPlayerDetails(OnePlayerDetails.data);
+      setIsLoading(false);
+      console.log("playerDetails", OnePlayerDetails.data);
+      const playerComments = await getPlayerCommentsService(playerId);
+      setComments(playerComments.data);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
     }
+  };
 
-    if (isLoading) {
-        return <h3>Loading...</h3>
-      }
-      
-      return (
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+
+  const submitComment = async (event) => {
+    event.preventDefault();
+
+    try {
+      await addCommentService(playerId, { comment });
+      // Actualizar los detalles del jugador para mostrar el nuevo comentario
+      getPlayerDetailData();
+      setComment(""); // Limpiar el campo del formulario después de enviar el comentario
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (isLoading) {
+    return <h3>Loading...</h3>;
+  }
+
+  return (
+    <div>
+      <h1>Player Details</h1>
+
+      {playerDetails ? (
         <div>
-          <h1>Player Details</h1>
-      
-          {playerDetails ? (
+          <h4>{playerDetails.name}</h4>
+          <br />
+          <p>{playerDetails.age}</p>
+          <br />
+          <p>{playerDetails.currentTeam}</p>
+          <p>{playerDetails.skillfulLeg}</p>
+          <br />
+
+          {playerDetails.imageUrl && (
             <div>
-              <h4>{playerDetails.name}</h4>
-              <br />
-              <p>{playerDetails.age}</p>
-              <br />
-              <p>{playerDetails.currentTeam}</p>
-              <p>{playerDetails.skillfulLeg}</p>
+              <img src={playerDetails.imageUrl} alt="Player" width={200} />
             </div>
-          ) : (
-            <h3>No player details found</h3>
           )}
         </div>
-      );}
+      ) : (
+        <h3>No player details found</h3>
+      )}
 
-export default Details
+      <form onSubmit={submitComment}>
+        <textarea
+          value={comment}
+          onChange={handleCommentChange}
+          placeholder="Escribe tu comentario aquí"
+        ></textarea>
+        <button type="submit">Comment</button>
+      </form>
+
+      <div className="all-comments-div">
+      <h3>Comments:</h3>
+      <hr />
+      {comments.length > 0 ? (
+        <ul>
+          {comments.map((comment) => (
+            <li key={comment._id}>
+              <p>Username: {comment.creator}</p>
+              <p>Comment: {comment.content}</p>
+              <hr />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No comments yet.</p>
+      )}
+      </div>
+    </div>
+  );
+}
+
+export default Details;

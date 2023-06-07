@@ -68,3 +68,76 @@ a {
   height: auto;
   margin-bottom: 10px;
 }
+
+.navbar-div {
+  background-color: wheat;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+
+.footer-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: wheat;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.container-main-div {
+  margin-bottom: 80px;
+}
+
+.all-comments-div {
+  margin-left: 100px;
+  margin-top: 30px;
+  border: 2px red solid ;
+  border-radius: 20px;
+  box-shadow: 10px 10px 5px 0px rgba(255,0,21,1);
+  width: 60%;
+}
+
+/* .player-list-in-top11 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+} */
+
+.player-list-in-top11 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.player-card {
+  margin-left: 10px;
+  flex: 0 0 28%; /* Esto establece que cada tarjeta ocupe un tercio del ancho de su contenedor */
+  gap: 20px;
+}
+
+.player-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  
+}
+
+.each-player-in-list {
+  margin: 10px;
+  padding: 10px;
+  border: 2px grey solid;
+  border-radius: 20px;
+  flex: 0 0 calc(28% - 20px);
+  list-style-type: none;
+}
+
+.each-player-in-list h3 {
+  text-decoration: none; 
+}
