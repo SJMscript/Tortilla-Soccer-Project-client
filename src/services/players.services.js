@@ -28,6 +28,10 @@ const deletePlayerService = (playerId) => {
     return service.delete(`/players/${playerId}/delete`)
 }
 
+const updatePlayerService = (playerId, uploadData) => {
+    return service.put(`/players/${playerId}/edit-player`, uploadData)
+}
+
 export {
     playersListService,
     playerDetailsService,
@@ -35,5 +39,6 @@ export {
     createPlayerService,
     playersDislikesService,
     addCommentService,
-    deletePlayerService
+    deletePlayerService,
+    updatePlayerService
 } 

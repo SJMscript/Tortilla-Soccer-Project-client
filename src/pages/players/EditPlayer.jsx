@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { updatePlayerService, getPlayerByIdService } from "../../services/players.services";
+import { updatePlayerService, playerDetailsService } from "../../services/players.services";
 import { uploadImageService } from "../../services/upload.services";
 import { RingLoader } from "react-spinners";
 import { useNavigate, useParams } from "react-router-dom";
@@ -18,7 +18,7 @@ function EditPlayer() {
 
   const getPlayerData = async () => {
     try {
-      const response = await getPlayerByIdService(playerId);
+      const response = await playerDetailsService(playerId);
       setPlayerData(response.data);
       setIsLoading(false);
     } catch (error) {
