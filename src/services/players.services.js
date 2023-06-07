@@ -25,7 +25,11 @@ const addCommentService = (playerId, comment) => {
 }
     
 const deletePlayerService = (playerId) => {
-    return service.delete(`/players/${playerId}/unlike`)
+    return service.delete(`/players/${playerId}/delete`)
+}
+
+const updatePlayerService = (playerId, uploadData) => {
+    return service.put(`/players/${playerId}/edit-player`, uploadData)
 }
 
 const getPlayerCommentsService = (playerId) => {
@@ -40,5 +44,6 @@ export {
     playersDislikesService,
     addCommentService,
     deletePlayerService,
-    getPlayerCommentsService
+    getPlayerCommentsService,
+    updatePlayerService
 } 

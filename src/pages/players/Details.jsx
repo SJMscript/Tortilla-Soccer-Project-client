@@ -84,19 +84,23 @@ function Details() {
         <button type="submit">Comment</button>
       </form>
 
+      <div className="all-comments-div">
       <h3>Comments:</h3>
+      <hr />
       {comments.length > 0 ? (
         <ul>
           {comments.map((comment) => (
             <li key={comment._id}>
-              <p>Username: {comment.creator.username}</p>
+              <p>Username: {comment.creator}</p>
               <p>Comment: {comment.content}</p>
+              <hr />
             </li>
           ))}
         </ul>
       ) : (
         <p>No comments yet.</p>
       )}
+      </div>
     </div>
   );
 }
