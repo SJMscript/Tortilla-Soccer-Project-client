@@ -113,10 +113,8 @@ function Top11Players() {
   );
 }
 
-<<<<<<< HEAD
 export default Top11Players
-=======
-export default Top11Players; 
+
 
 /* import { useState, useEffect } from "react";
 import { playersListService } from "../../services/players.services";
@@ -272,4 +270,3 @@ export default Top11Players;
 
 
 
->>>>>>> dev

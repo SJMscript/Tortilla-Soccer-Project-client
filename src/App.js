@@ -17,11 +17,8 @@ import CreatePlayer from './pages/players/CreatePlayer';
 import Footer from './components/Footer';
 import DeletePlayer from './pages/players/DeletePlayer';
 import EditPlayer from './pages/players/EditPlayer';
-<<<<<<< HEAD
 import Stadiums from "../src/components/Stadiums"
-=======
 import EditProfile from './pages/users/EditProfile';
->>>>>>> 8c6bb5b3f0d27e54f2a4c7a61acb2df8bc684d84
 
 function App() {
   return (
@@ -42,12 +39,9 @@ function App() {
     <Route path="/players/:playerId/details" element={ <IsPrivate> <Details /> </IsPrivate> } />
     <Route path="/players/:playerId/delete" element={ <IsPrivate> <DeletePlayer /> </IsPrivate> } />
     <Route path="/players/:playerId/edit" element={ <IsPrivate> <EditPlayer /> </IsPrivate> } />
-<<<<<<< HEAD
     <Route path="/top11/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } />
     <Route path="/stadiums" element={ <IsPrivate> <Stadiums /> </IsPrivate> } />
-=======
     {/* <Route path="/top11/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } /> */}
->>>>>>> 8c6bb5b3f0d27e54f2a4c7a61acb2df8bc684d84
     {/* <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
     <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } /> */}
 
