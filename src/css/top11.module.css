@@ -1,0 +1,15 @@
+.playersList{
+    background-color: #2870d4;
+    
+}
+
+.playersList h1, h3{
+    color: rgb(102, 12, 12);
+    
+}
+
+.top11CardContainer {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}

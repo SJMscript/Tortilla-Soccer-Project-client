@@ -5,6 +5,8 @@ import {
   playersDislikesService,
 } from "../../services/players.services";
 import { Link } from "react-router-dom";
+import styles from "../../css/playersList.module.css"
+
 
 function List() {
   const [playersList, setPlayersList] = useState(null);
@@ -53,10 +55,10 @@ function List() {
   }
 
   return (
-    <div>
+    <div className={styles.main}>
       <h3>Lista de jugadores</h3>
 
-      <div className="player-list">
+      <div className={styles.playerList}>
         {playersList.map((eachPlayer) => (
           <div className="each-player-in-list" key={eachPlayer._id}>
             <li>

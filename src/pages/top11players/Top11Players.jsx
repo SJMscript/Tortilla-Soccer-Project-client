@@ -3,6 +3,7 @@ import { playersListService } from "../../services/players.services";
 import { useNavigate } from "react-router-dom";
 import { createTop11Service, getTop11Service, deleteTop11Service } from "../../services/top11Players.services";
 import { profileService } from "../../services/profile.services";
+import styles from "../../css/top11.module.css"
 
 function Top11Players() {
   const [playersList, setPlayersList] = useState([]);
@@ -114,7 +115,7 @@ function Top11Players() {
 
   const renderPlayerListByPosition = (position) => {
     return (
-      <div>
+      <div className={styles.playersList}>
         <h3>{position}s</h3>
         <div className="player-list-in-top11">
           {noTop11.map((eachPlayer) => {
@@ -142,16 +143,14 @@ function Top11Players() {
   };
 
   return (
-    <div>
-      <h3>Our 11 chosen</h3>
-      <p>{goalkeeperCount} goalkeeper(s) selected (max: 1)</p>
-      <p>{defenseCount} defense(s) selected (max: 4)</p>
-      <p>{midfielderCount} midfielder(s) selected (max: 3)</p>
-      <p>{forwardCount} forward(s) selected (max: 3)</p>
-
+    <div className={styles.playersList}>
+      <h1>Our 11 chosen</h1>
+      <br />
+      <p>Formation 1-4-3-3</p>
+      <br />
       <div>
         <h3>Goalkeepers</h3>
-        <div className="top11-card-container">
+        <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'goalkeeper') {
               return (
@@ -178,7 +177,7 @@ function Top11Players() {
 
       <div>
         <h3>Defenses</h3>
-        <div className="top11-card-container">
+        <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'defense') {
               return (
@@ -205,7 +204,7 @@ function Top11Players() {
 
       <div>
         <h3>Midfielders</h3>
-        <div className="top11-card-container">
+        <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'midfielder') {
               return (
@@ -232,7 +231,7 @@ function Top11Players() {
 
       <div>
         <h3>Forwards</h3>
-        <div className="top11-card-container">
+        <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'forward') {
               return (

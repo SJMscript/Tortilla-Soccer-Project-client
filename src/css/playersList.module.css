@@ -1,0 +1,23 @@
+.main{
+    background-color: #2870d4;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    align-items: s;
+    padding: 0;
+}
+
+.main h3 {
+    color: rgb(102, 12, 12);
+    font-size: 2em;
+    
+}
+
+.playerList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
