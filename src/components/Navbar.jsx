@@ -24,19 +24,19 @@ function Navbar() {
   return (
  <nav className="navbar-div">
 
-    <Link to="/">Home</Link>
+    <Link className="link-navbar" to="/">Home</Link>
 
-    {isLoggedIn && <Link to="/user/profile">Profile</Link>}
-    {isLoggedIn && <Link to="/players/list">Players List</Link>}
-    {isLoggedIn && <Link to="/top11/createTop11">Top 11</Link>}
-    {isLoggedIn && <Link to="/players/new-player">Create Player</Link>}
-    {isLoggedIn && <Link to="/stadiums">Stadiums</Link>}
-    {isLoggedIn && <Link to="/createTop11">Hall of Fame</Link>}
-    {isLoggedIn && <button onClick={handleLogout}>Log Out</button>}
+    {isLoggedIn && <Link className="link-navbar" to="/user/profile">Profile</Link>}
+    {isLoggedIn && <Link className="link-navbar" to="/players/list">Players List</Link>}
+    {isLoggedIn && <Link className="link-navbar" to="/top11/createTop11">Top 11</Link>}
+    {isLoggedIn && <Link className="link-navbar" to="/players/new-player">Create Player</Link>}
+    {isLoggedIn && <Link className="link-navbar" to="/stadiums">Stadiums</Link>}
+    {isLoggedIn && <Link className="link-navbar" to="/createTop11">Hall of Fame</Link>}
+    {isLoggedIn && <button className="button-logout" onClick={handleLogout}>Log Out</button>}
 
 
-    {!isLoggedIn && <Link to="/auth/signup">Sign Up</Link>}
-    {!isLoggedIn && <Link to="/auth/login">Log In</Link>}
+    {!isLoggedIn && <Link className="link-navbar" to="/auth/signup">Sign Up</Link>}
+    {!isLoggedIn && <Link className="link-navbar" to="/auth/login">Log In</Link>}
 
  </nav>
   )
