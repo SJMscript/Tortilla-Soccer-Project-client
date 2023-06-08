@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { playersListService } from "../../services/players.services";
 import { useNavigate } from "react-router-dom";
-import { createTop11Service, getTop11Service } from "../../services/top11Players.services";
+import { createTop11Service, getTop11Service, deleteTop11Service } from "../../services/top11Players.services";
 import { profileService } from "../../services/profile.services";
 
 function Top11Players() {
@@ -79,12 +79,66 @@ function Top11Players() {
     }
   };
 
+  const removeFromTop11PlayersList = async (playerId) => {
+    try {
+      const response = await deleteTop11Service(playerId);
+      console.log(response, "respuesta del servicio");
+      setTop11PlayersList((prevList) => prevList.filter((player) => player._id !== playerId));
+
+      const player = playersList.find((p) => p._id === playerId);
+      if (player) {
+        if (player.playerPosition === "goalkeeper") {
+          setGoalkeeperCount((count) => count - 1);
+        } else if (player.playerPosition === "defense") {
+          setDefenseCount((count) => count - 1);
+        } else if (player.playerPosition === "midfielder") {
+          setMidfielderCount((count) => count - 1);
+        } else if (player.playerPosition === "forward") {
+          setForwardCount((count) => count - 1);
+        }
+      }
+
+      window.location.reload(); // Recargar la página para mostrar la lista actualizada del Top 11
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const isPlayerInTop11 = (player) => {
     return top11PlayersList.some((p) => p.player._id === player._id);
   };
 
   const navigateToCreateTop11 = () => {
     navigate("/createTop11");
+  };
+
+  const renderPlayerListByPosition = (position) => {
+    return (
+      <div>
+        <h3>{position}s</h3>
+        <div className="player-list-in-top11">
+          {noTop11.map((eachPlayer) => {
+            if (eachPlayer.playerPosition === position) {
+              return (
+                <div className="player-card" key={eachPlayer._id}>
+                  <h3>
+                    {eachPlayer.name}, {eachPlayer.age}
+                  </h3>
+                  <p>{eachPlayer.playerPosition}</p>
+                  <p>{eachPlayer.skillfulLeg}</p>
+                  {!isPlayerInTop11(eachPlayer) && (
+                    <button onClick={() => addToTop11PlayersList(eachPlayer)}>
+                      Add to Top 11
+                    </button>
+                  )}
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -95,39 +149,120 @@ function Top11Players() {
       <p>{midfielderCount} midfielder(s) selected (max: 3)</p>
       <p>{forwardCount} forward(s) selected (max: 3)</p>
 
-      {top11PlayersList.map((eachPlayer) => (
-        <div className="top11-card" key={eachPlayer._id}>
-          <li>
-            <h3>{eachPlayer.player.name}</h3>
-            {eachPlayer.player.imageUrl && (
-              <div>
-                <img src={eachPlayer.player.imageUrl} alt="Player" width={200} />
-              </div>
-            )}
-            <p>{eachPlayer.player.playerPosition}</p>
-          </li>
+      <div>
+        <h3>Goalkeepers</h3>
+        <div className="top11-card-container">
+          {top11PlayersList.map((eachPlayer) => {
+            if (eachPlayer.player.playerPosition === 'goalkeeper') {
+              return (
+                <div className="top11-card" key={eachPlayer._id}>
+                  <li>
+                    <h3>{eachPlayer.player.name}</h3>
+                    {eachPlayer.player.imageUrl && (
+                      <div>
+                        <img src={eachPlayer.player.imageUrl} alt="Player" width={200} />
+                      </div>
+                    )}
+                    <p>{eachPlayer.player.playerPosition}</p>
+                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                      Remove from Top 11
+                    </button>
+                  </li>
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
-      ))}
-
-      <h3>All Players</h3>
-      <div className="player-list-in-top11">
-        {noTop11.map((eachPlayer) => (
-          <div className="player-card" key={eachPlayer._id}>
-            <h3>
-              {eachPlayer.name}, {eachPlayer.age}
-            </h3>
-            <p>{eachPlayer.playerPosition}</p>
-            <p>{eachPlayer.skillfulLeg}</p>
-            {!isPlayerInTop11(eachPlayer) && (
-              <button onClick={() => addToTop11PlayersList(eachPlayer)}>
-                Add to Top 11
-              </button>
-            )}
-          </div>
-        ))}
       </div>
 
-      <button onClick={navigateToCreateTop11}>Go to Create Top 11</button>
+      <div>
+        <h3>Defenses</h3>
+        <div className="top11-card-container">
+          {top11PlayersList.map((eachPlayer) => {
+            if (eachPlayer.player.playerPosition === 'defense') {
+              return (
+                <div className="top11-card" key={eachPlayer._id}>
+                  <li>
+                    <h3>{eachPlayer.player.name}</h3>
+                    {eachPlayer.player.imageUrl && (
+                      <div>
+                        <img src={eachPlayer.player.imageUrl} alt="Player" width={200} />
+                      </div>
+                    )}
+                    <p>{eachPlayer.player.playerPosition}</p>
+                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                      Remove from Top 11
+                    </button>
+                  </li>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      </div>
+
+      <div>
+        <h3>Midfielders</h3>
+        <div className="top11-card-container">
+          {top11PlayersList.map((eachPlayer) => {
+            if (eachPlayer.player.playerPosition === 'midfielder') {
+              return (
+                <div className="top11-card" key={eachPlayer._id}>
+                  <li>
+                    <h3>{eachPlayer.player.name}</h3>
+                    {eachPlayer.player.imageUrl && (
+                      <div>
+                        <img src={eachPlayer.player.imageUrl} alt="Player" width={200} />
+                      </div>
+                    )}
+                    <p>{eachPlayer.player.playerPosition}</p>
+                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                      Remove from Top 11
+                    </button>
+                  </li>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      </div>
+
+      <div>
+        <h3>Forwards</h3>
+        <div className="top11-card-container">
+          {top11PlayersList.map((eachPlayer) => {
+            if (eachPlayer.player.playerPosition === 'forward') {
+              return (
+                <div className="top11-card" key={eachPlayer._id}>
+                  <li>
+                    <h3>{eachPlayer.player.name}</h3>
+                    {eachPlayer.player.imageUrl && (
+                      <div>
+                        <img src={eachPlayer.player.imageUrl} alt="Player" width={200} />
+                      </div>
+                    )}
+                    <p>{eachPlayer.player.playerPosition}</p>
+                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                      Remove from Top 11
+                    </button>
+                  </li>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      </div>
+
+      {renderPlayerListByPosition("goalkeeper")}
+      {renderPlayerListByPosition("defense")}
+      {renderPlayerListByPosition("midfielder")}
+      {renderPlayerListByPosition("forward")}
+
+      
     </div>
   );
 }
