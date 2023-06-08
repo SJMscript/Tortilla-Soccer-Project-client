@@ -1,9 +1,12 @@
 import styles from "../css/home.module.css";
 
 function Home() {
+
+  
+
   return (
       <div className={styles.home}>
-      <div className="home-div">
+      <div>
         <h1 className={styles.h1TitleHome}>Tortilla Soccer</h1>
         <h3 className={styles.h3SubtitleHome}>Created by Juan Diego y Santiago</h3>
       </div>

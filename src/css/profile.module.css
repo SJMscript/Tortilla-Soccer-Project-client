@@ -1,5 +1,39 @@
 .profile {
-    background-color: #e4002b;
+   /*  background-color: #e4002b; */
+   background-color: #2870d4;
     height: 100vh;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: s;
+    padding: 0;
+}
+
+.profileData {
+/*     display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column; */
+    padding-left: 20vh;
+    padding-top: 10vh;
+    padding-right: 0;
+}
+
+.username {
+    color: white;
+    padding-left: 10vh;
+    padding-top: 10vh;
+}
+
+.h5Profile {
+    color: white;
+}
+
+.profileCardData {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+color: white;
+
 }
