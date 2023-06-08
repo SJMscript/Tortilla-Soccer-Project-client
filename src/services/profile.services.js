@@ -9,8 +9,13 @@ const editProfileService = (userData) => {
     return service.put("/user/profile/edit", userData)
 }
 
+const getUserRoleService = () => {
+    return service.get("/user/role");
+  };
+  
 
 export {
     profileService,
-    editProfileService
+    editProfileService,
+    getUserRoleService
 }
