@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300&family=Montserrat:wght@300&family=Roboto+Condensed:wght@300&display=swap');
+
+
+* {
+  font-family: Roboto;
+}
 .App {
   text-align: center;
 }
 
 a {
-  margin: 20px
+  margin: 20px;
+  text-decoration: none
 }
 
 /* Estilos para los jugadores */
@@ -70,7 +77,7 @@ a {
 }
 
 .navbar-div {
-  background-color: wheat;
+  background-color: #061934;
   height: 55px;
   display: flex;
   align-items: center;
@@ -78,13 +85,17 @@ a {
   text-align: center;
 }
 
+.link-navbar:hover, .link-footer:hover {
+  color: gold;
+}
 
 .footer-div {
   position: fixed;
   bottom: 0;
   left: 0;
+  margin: 0;
   width: 100%;
-  background-color: wheat;
+  background-color: #061934;
   height: 55px;
   display: flex;
   align-items: center;
@@ -141,3 +152,22 @@ a {
 .each-player-in-list h3 {
   text-decoration: none; 
 }
+
+.footer-div a, .navbar-div a {
+  text-decoration: none;
+  color: white;
+}
+
+.button-logout {
+  background: none;
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  color: white;
+  font-family: Roboto;
+}
+
+.button-logout:hover {
+  color: gold;
+}
+

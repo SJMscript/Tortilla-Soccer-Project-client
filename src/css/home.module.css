@@ -1,0 +1,55 @@
+.home {
+    background-color: #e4002b;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+
+  .h1TitleHome {
+    margin: 0;
+    display: flex;
+    color: white;
+    font-size: 20vh;
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .h1TitleHome:hover {
+    color: gold;
+  }
+
+
+  .h3SubtitleHome {
+    color: white;
+  }
+
+  .h3SubtitleHome:hover {
+    color: gold;
+  }
+
+  
+  section {
+    display: flex;
+    width: 600px;
+    height: 430px;
+  }
+
+  section img {
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: 1s ease;
+  }
+
+  section img:hover {
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(120%);
+  }
