@@ -42,7 +42,7 @@
    return (
      <div className={styles.profile}>
       <div className={styles.profileData}>
-       <img
+       <img className={styles.profileImage} 
          src={profile.profileImg || "/images/perfil2.png"}
          alt="profileImg"
          width={300}
@@ -51,29 +51,35 @@
        <p className={styles.username}>E-mail: {profile.email}</p>
 
       </div>
+             <button className={styles.editProfileBtn} onClick={handleEditProfile}>Edit Profile</button>
+         <h5 className={styles.h5Profile}>Jugadores Favoritos</h5>
+         
         <div  className={styles.profileCardData} >
 
-         <h5 className={styles.h5Profile}>Jugadores Favoritos</h5>
-         <div>
+         <div className={styles.playerCard}>
          {likedPlayers.map((player) => (
            <div key={player._id}>
-             <h5>{player.name}</h5>
-             <p>Age: {player.age}</p>
-             <img
+             <h5 className={styles.playerName}>{player.name}</h5>
+             <br />
+             <p className={styles.playerAge} >Age: {player.age}</p>
+             <br />
+             <img className={styles.playerImg}
                src={player.imageUrl}
                alt="playerImg"
                width={250}
                height={200}
              />
-             <p>Team: {player.currentTeam}</p>
-             <p>Leg: {player.skillfulLeg}</p>
+             <br />
+             <p className={styles.playerTeam} >Team: {player.currentTeam}</p>
+             <br />
+             <p className={styles.playerLeg} >Leg: {player.skillfulLeg}</p>
+
 
         </div>
          ))}
          </div>
          </div>
        
-       <button onClick={handleEditProfile}>Edit Profile</button>
      </div>
    );
  }

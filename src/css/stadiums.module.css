@@ -1,0 +1,13 @@
+.body {
+    background-image: url(../../public/images/cesped.webp);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vh;
+}
+
+.h1Title {
+    color: rgb(255, 255, 255);
+    font-size: 100px;
+}

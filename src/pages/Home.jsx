@@ -8,7 +8,6 @@ function Home() {
       <div className={styles.home}>
       <div>
         <h1 className={styles.h1TitleHome}>Tortilla Soccer</h1>
-        <h3 className={styles.h3SubtitleHome}>Created by Juan Diego y Santiago</h3>
       </div>
         <section>
           <img src="/images/españa.jpg" alt="esp" />
@@ -19,6 +18,8 @@ function Home() {
           <img src="/images/españa5.jpg" alt="esp" />
           <img src="/images/españa6jpg.jpg" alt="esp" />
         </section>
+        <br />
+        <h3 className={styles.h3SubtitleHome}>Created by Juan Diego y Santiago</h3>
         </div>
   );
 }

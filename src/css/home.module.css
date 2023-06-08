@@ -31,7 +31,8 @@
   
   section {
     display: flex;
-    width: 600px;
+    width: 1500px;
+    /* width: 600px; */
     height: 430px;
   }
 
@@ -44,8 +45,8 @@
   }
 
   section img:hover {
-    cursor: crosshair;
-    width: 300px;
+    width: 550px;
+   /* width: 300px; */
     opacity: 1;
     filter: contrast(120%);
   }

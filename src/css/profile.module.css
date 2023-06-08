@@ -1,33 +1,50 @@
+
 .profile {
    /*  background-color: #e4002b; */
    background-color: #2870d4;
     height: 100vh;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-items: s;
-    padding: 0;
+    flex-direction: column;
 }
 
 .profileData {
-/*     display:flex;
+    display:flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: column; */
+    flex-direction: column; 
     padding-left: 20vh;
-    padding-top: 10vh;
     padding-right: 0;
+}
+
+.profileImage {
+    padding-right: 25vh;
+    margin-bottom: 2vh;
 }
 
 .username {
     color: white;
-    padding-left: 10vh;
-    padding-top: 10vh;
+    padding-left: 9vh;
+    padding-top: 5vh;
+    
+}
+
+.username:hover, .editProfileBtn:hover {
+    color: #061934;
+}
+
+.h5Profile:hover {
+    color: gold;
+    font-size: 35px;
 }
 
 .h5Profile {
-    color: white;
+    color: #061934;
+    display: flex;
+    font-size: 30px;
 }
 
 .profileCardData {
@@ -36,4 +53,37 @@ justify-content: flex-end;
 align-items: center;
 color: white;
 
+}
+
+
+
+.editProfileBtn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 16px 32px;
+    color: white;
+    font-size: 30px;
+    position: relative;
+    border-radius: 12px;
+    padding-left: 1vh;
+}
+
+.playerCard {
+    display: flex;
+    gap: 5vh;
+    flex: 0 0 23%;
+
+}
+
+.playerName:hover, .playerImg:hover, .playerAge:hover, .playerLeg:hover, .playerTeam:hover {
+    opacity: 1;
+    filter: contrast(120%);
+    
+}
+
+.playerName, .playerImg, .playerAge, .playerLeg, .playerTeam {
+    font-size: 20px;
+    color: #061934;
+    opacity: .7;
 }

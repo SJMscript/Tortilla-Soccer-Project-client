@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from "../css/stadiums.module.css"
 
 const EstadiosList = () => {
   const [estadiosData, setEstadiosData] = useState([]);
@@ -16,8 +17,10 @@ const EstadiosList = () => {
   
 
   return (
-    <div>
-      <h1>Lista de Estadios</h1>
+    <div className={styles.body}>
+      <h1 className={styles.h1Title}>Stadiums </h1>
+      <br />
+      <h1 className={styles.h1Title} > Coming Soon...</h1>
       <ul>
         {estadiosData.map((estadio, index) => (
           <li key={index}>
