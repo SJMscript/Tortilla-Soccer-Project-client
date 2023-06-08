@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createPlayerService } from "../../services/players.services";
 import { uploadImageService } from "../../services/upload.services";
 import { RingLoader } from "react-spinners";
+import styles from "../../css/createPlayer.module.css"
 
 import { useNavigate } from "react-router-dom";
 
@@ -66,17 +67,18 @@ function CreatePlayer() {
   };
 
   return (
-    <div className="AddPlayerPage">
+    <div className={styles.addPlayerFormMain}>
+    <div className={styles.addPlayerForm}>
       <h3>Add a new Player</h3>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Name: </label>
         <input type="text" name="name" onChange={handleNameChange} value={playerName} />
         <br />
-        <label htmlFor="age">Age</label>
+        <label htmlFor="age">Age: </label>
         <input type="number" name="age" onChange={handleAgeChange} value={playerAge} />
         <br />
-        <label htmlFor="position">Position</label>
+        <label htmlFor="position">Position: </label>
         <input
           type="text"
           name="position"
@@ -84,7 +86,7 @@ function CreatePlayer() {
           value={playerPosition}
         />
         <br />
-        <label htmlFor="skillfulLeg">Skillful Leg</label>
+        <label htmlFor="skillfulLeg">Skillful Leg: </label>
         <input
           type="text"
           name="skillfulLeg"
@@ -92,7 +94,7 @@ function CreatePlayer() {
           value={playerSkillfulLeg}
         />
         <br />
-        <label htmlFor="imageUrl">Image</label>
+        <label htmlFor="imageUrl">Image: </label>
         <input
           type="file"
           name="imageUrl"
@@ -108,7 +110,7 @@ function CreatePlayer() {
           </div>
         ) : null}
 
-        <label htmlFor="currentTeam">Current Team</label>
+        <label htmlFor="currentTeam">Current Team: </label>
         <input
           type="text"
           name="currentTeam"
@@ -116,7 +118,7 @@ function CreatePlayer() {
           value={playerCurrentTeam}
         />
         <br />
-        <label htmlFor="marketValue">Market Value</label>
+        <label htmlFor="marketValue">Market Value: </label>
         <input
           type="text"
           name="marketValue"
@@ -125,8 +127,9 @@ function CreatePlayer() {
         />
         <br />
 
-        <button type="submit">Add Here!</button>
+        <button className={styles.addBtn} type="submit">Add Here!</button>
       </form>
+    </div>
     </div>
   );
 }
