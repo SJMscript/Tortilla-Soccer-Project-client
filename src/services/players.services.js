@@ -13,7 +13,7 @@ const playersLikesService = (playerId) => {
 }
 
 const playersDislikesService = (playerId) => {
-    return service.post(`/players/${playerId}/unlike`)
+    return service.post(`/players/${playerId}/unLike`)
 }
 
 const createPlayerService = (createData) => {
