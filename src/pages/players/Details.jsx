@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 import { playerDetailsService } from "../../services/players.services";
 import { addCommentService } from "../../services/players.services";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getPlayerCommentsService } from "../../services/players.services";
+import { getUserRoleService } from "../../services/profile.services";
 
 function Details() {
   const [playerDetails, setPlayerDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [isModerator, setIsModerator] = useState(false);
   const { playerId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPlayerDetailData();
+    getUserRole();
   }, []);
 
   const getPlayerDetailData = async () => {
@@ -27,6 +31,15 @@ function Details() {
     } catch (error) {
       console.log(error);
       setIsLoading(false);
+    }
+  };
+
+  const getUserRole = async () => {
+    try {
+      const userRole = await getUserRoleService();
+      setIsModerator(userRole.data.role === "moderator");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -48,6 +61,16 @@ function Details() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleEditPlayer = () => {
+    // Redireccionar al usuario a la página de edición del jugador
+    navigate(`/players/${playerId}/edit`);
+  };
+
+  const handleDeletePlayer = () => {
+    // Redireccionar al usuario a la página de borrado del jugador
+    navigate(`/players/${playerId}/delete`);
   };
 
   if (isLoading) {
@@ -88,22 +111,29 @@ function Details() {
       </form>
 
       <div className="all-comments-div">
-      <h3>Comments:</h3>
-      <hr />
-      {comments.length > 0 ? (
-        <ul>
-          {comments.map((comment) => (
-            <li key={comment._id}>
-              <p>Username: {comment.creator}</p>
-              <p>Comment: {comment.content}</p>
-              <hr />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No comments yet.</p>
-      )}
+        <h3>Comments:</h3>
+        <hr />
+        {comments.length > 0 ? (
+          <ul>
+            {comments.map((comment) => (
+              <li key={comment._id}>
+                <p>Username: {comment.creator}</p>
+                <p>Comment: {comment.content}</p>
+                <hr />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No comments yet.</p>
+        )}
       </div>
+
+      {isModerator && (
+        <div>
+          <button onClick={handleEditPlayer}>Edit Player</button>
+          <button onClick={handleDeletePlayer}>Delete Player</button>
+        </div>
+      )}
     </div>
   );
 }
