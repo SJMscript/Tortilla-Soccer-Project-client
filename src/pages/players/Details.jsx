@@ -37,8 +37,11 @@ function Details() {
   const submitComment = async (event) => {
     event.preventDefault();
 
+    
     try {
-      await addCommentService(playerId, { comment });
+      console.log(comment, "comment")
+      await addCommentService(playerId, { content: comment });
+      //! deberíamos pasar además del content con el comment también el creator con el Id del usuario que crea el comment?
       // Actualizar los detalles del jugador para mostrar el nuevo comentario
       getPlayerDetailData();
       setComment(""); // Limpiar el campo del formulario después de enviar el comentario
