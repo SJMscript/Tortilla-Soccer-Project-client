@@ -200,14 +200,16 @@ function EditPlayer() {
       const response = await uploadImageService(uploadData);
       setPlayerData((prevData) => ({
         ...prevData,
-        imageUrl: response.data.imageUrl
+        imageUrl: response.data.imageUrl,
+        marketValue: prevData.marketValue.toString()
       }));
       setIsUploading(false);
     } catch (error) {
       navigate("/error");
     }
   };
-
+  // console.log(playerData, "data");
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
