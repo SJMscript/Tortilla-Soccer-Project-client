@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { playerDetailsService } from "../../services/players.services";
-import { addCommentService } from "../../services/players.services";
+import { addCommentService, deleteCommentService } from "../../services/players.services";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPlayerCommentsService } from "../../services/players.services";
-import { getUserRoleService } from "../../services/profile.services";
+import { AuthContext } from "../../context/auth.context";
 
 function Details() {
   const [playerDetails, setPlayerDetails] = useState(null);
@@ -13,10 +13,12 @@ function Details() {
   const [isModerator, setIsModerator] = useState(false);
   const { playerId } = useParams();
   const navigate = useNavigate();
+  
+  const { activeUser } = useContext(AuthContext); // Obtener el activeUser desde el contexto de autenticación
+  const userId = activeUser ? activeUser._id : null; // Obtener el userId del activeUser
 
   useEffect(() => {
     getPlayerDetailData();
-    getUserRole();
   }, []);
 
   const getPlayerDetailData = async () => {
@@ -34,15 +36,6 @@ function Details() {
     }
   };
 
-  const getUserRole = async () => {
-    try {
-      const userRole = await getUserRoleService();
-      setIsModerator(userRole.data.role === "moderator");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
@@ -50,26 +43,30 @@ function Details() {
   const submitComment = async (event) => {
     event.preventDefault();
 
-    
     try {
-      console.log(comment, "comment")
+      console.log(comment, "comment");
       await addCommentService(playerId, { content: comment });
-      //! deberíamos pasar además del content con el comment también el creator con el Id del usuario que crea el comment?
-      // Actualizar los detalles del jugador para mostrar el nuevo comentario
       getPlayerDetailData();
-      setComment(""); // Limpiar el campo del formulario después de enviar el comentario
+      setComment("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteComment = async (commentId) => {
+    try {
+      await deleteCommentService(commentId);
+      getPlayerDetailData();
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleEditPlayer = () => {
-    // Redireccionar al usuario a la página de edición del jugador
     navigate(`/players/${playerId}/edit`);
   };
 
   const handleDeletePlayer = () => {
-    // Redireccionar al usuario a la página de borrado del jugador
     navigate(`/players/${playerId}/delete`);
   };
 
@@ -117,8 +114,16 @@ function Details() {
           <ul>
             {comments.map((comment) => (
               <li key={comment._id}>
-                <p>Username: {comment.creator}</p>
+                <p>Username: {comment.creator.username}</p>
                 <p>Comment: {comment.content}</p>
+                {/* {console.log(userId)}
+                {console.log("userId type:", typeof userId)}
+                {console.log("comment creator ID type:", typeof comment.creator._id)}
+                {console.log("userId:", userId)}
+                {console.log("comment creator ID:", comment.creator._id)} */}
+                {comment.creator._id === userId && (
+                  <button onClick={() => deleteComment(comment._id)}>Delete</button>
+                )}
                 <hr />
               </li>
             ))}

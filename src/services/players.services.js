@@ -36,6 +36,10 @@ const getPlayerCommentsService = (playerId) => {
     return service.get(`/players/${playerId}/comments`);
 }
 
+const deleteCommentService = (commentId) => {
+    return service.delete(`/players/comments/${commentId}`);
+  };
+
 export {
     playersListService,
     playerDetailsService,
@@ -45,5 +49,6 @@ export {
     addCommentService,
     deletePlayerService,
     getPlayerCommentsService,
-    updatePlayerService
+    updatePlayerService,
+    deleteCommentService
 } 
