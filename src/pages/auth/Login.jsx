@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginService } from "../../services/auth.services";
-
+import styles from "../../css/login.module.css"
 import { AuthContext } from "../../context/auth.context";
 
 function Login() {
@@ -54,7 +54,8 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className={styles.loginDivMain}>
+    <div className={styles.loginDiv}>
 
       <h1>Log In</h1>
 
@@ -67,7 +68,7 @@ function Login() {
           onChange={handleEmailChange}
         />
 
-        <br />
+      <br />
 
         <label>Password:</label>
         <input
@@ -81,9 +82,10 @@ function Login() {
 
         {errorMesage && <p style={{color: "red"}}> {errorMesage} </p>}
 
-        <button type="submit">Login</button>
+        <button className={styles.loginBtn} type="submit">Login</button>
       </form>
       
+    </div>
     </div>
   );
 }

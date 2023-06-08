@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupService } from "../../services/auth.services";
+import styles from "../../css/signup.module.css"
 
 function Signup() {
 
@@ -46,8 +47,8 @@ function Signup() {
   };
 
   return (
-    <div>
-
+    <div className={styles.signDivMain}>
+    <div className={styles.signDiv}>
       <h1>Sign Up</h1>
     
       <form onSubmit={handleSignup}>
@@ -84,9 +85,10 @@ function Signup() {
 
         {errorMesage && <p style={{color: "red"}}> {errorMesage} </p>}
 
-        <button type="submit">Signup</button>
+        <button className={styles.signBtn} type="submit">Signup</button>
       </form>
       
+    </div>
     </div>
   );
 }
