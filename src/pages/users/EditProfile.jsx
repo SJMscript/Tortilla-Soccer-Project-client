@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { editProfileService, profileService } from "../../services/profile.services";
 import { uploadImageService } from "../../services/upload.services";
-import styles from "../../css/editProfile.module.css"
-import Form from "react-bootstrap/Form"
-import Button from 'react-bootstrap/Button'
+import styles from "../../css/editProfile.module.css";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function EditProfile() {
   const [userData, setUserData] = useState({
@@ -93,65 +93,64 @@ function EditProfile() {
   return (
     <div className={styles.bodyEditProfile}>
       <h3 className={styles.h3Profile}>Edit Profile</h3>
-    <Form>
-      <form onSubmit={handleSubmit}>
-      <Form.Group className={styles.formProfile} >
-        <Form.Label htmlFor="username">Username</Form.Label>
-        <Form.Control
-          type="text"
-          name="username"
-          onChange={handleInputChange}
-          value={userData.username}
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className={styles.formProfile}>
+          <Form.Label htmlFor="username">Username</Form.Label>
+          <Form.Control
+            type="text"
+            name="username"
+            onChange={handleInputChange}
+            value={userData.username}
           />
         </Form.Group>
         <br />
-        <Form.Group className={styles.formProfile} >
-        <Form.Label htmlFor="email">Email</Form.Label>
-        <Form.Control
-          type="email"
-          name="email"
-          onChange={handleInputChange}
-          value={userData.email}
+        <Form.Group className={styles.formProfile}>
+          <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            onChange={handleInputChange}
+            value={userData.email}
           />
         </Form.Group>
         <br />
-        <Form.Group className={styles.formProfile} >
-        <Form.Label htmlFor="oldPassword">Old Password</Form.Label>
-        <Form.Control
-          type="password"
-          name="oldPassword"
-          onChange={handleInputChange}
-          value={userData.oldPassword}
+        <Form.Group className={styles.formProfile}>
+          <Form.Label htmlFor="oldPassword">Old Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="oldPassword"
+            onChange={handleInputChange}
+            value={userData.oldPassword}
           />
         </Form.Group>
         <br />
-        <Form.Group className={styles.formProfile} >
-        <Form.Label htmlFor="newPassword">New Password</Form.Label>
-        <Form.Control
-          type="password"
-          name="newPassword"
-          onChange={handleInputChange}
-          value={userData.newPassword}
+        <Form.Group className={styles.formProfile}>
+          <Form.Label htmlFor="newPassword">New Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="newPassword"
+            onChange={handleInputChange}
+            value={userData.newPassword}
           />
         </Form.Group>
         <br />
-        <Form.Group className={styles.formProfile} >
-        <Form.Label htmlFor="profileImg">Profile Image</Form.Label>
-        <Form.Control
-          type="file"
-          name="profileImg"
-          onChange={handleFileUpload}
-          accept="image/*"
-          disabled={isUploading}
+        <Form.Group className={styles.formProfile}>
+          <Form.Label htmlFor="profileImg">Profile Image</Form.Label>
+          <Form.Control
+            type="file"
+            name="profileImg"
+            onChange={handleFileUpload}
+            accept="image/*"
+            disabled={isUploading}
           />
-         
-          </Form.Group>
+        </Form.Group>
         <br />
         {isUploading ? <h3>... Uploading Image</h3> : null}
         {userData.profileImg && <img src={userData.profileImg} alt="Profile" width={200} />}
         <br />
-        <Button className={styles.btnEditProfile} variant="primary" type="submit">Save</Button>
-      </form>
+        <Button className={styles.btnEditProfile} variant="primary" type="submit">
+          Save
+        </Button>
       </Form>
     </div>
   );
