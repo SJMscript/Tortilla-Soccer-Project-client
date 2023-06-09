@@ -93,6 +93,7 @@ function Details() {
           <h4 className={styles.h4Details} >{playerDetails.name}, {playerDetails.age}</h4>
           <p className={styles.pDetails} >Current Team: {playerDetails.currentTeam}</p>
           <p className={styles.pDetails} >Skillful Leg: {playerDetails.skillfulLeg}</p>
+          <p className={styles.pDetails} >Market Value: {playerDetails.marketValue}.000.000</p>
           {playerDetails.imageUrl && (
             <div>
               <img className={styles.imgDetails} src={playerDetails.imageUrl} alt="Player" width={200} />

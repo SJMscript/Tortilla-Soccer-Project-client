@@ -28,8 +28,8 @@
   
   .imgDetails{
     max-width: 100%;
-    height: auto;
-    width: auto;
+    height: 300px;
+    width: 400px;
     margin-bottom: 20px;
   }
 
