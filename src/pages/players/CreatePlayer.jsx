@@ -3,6 +3,8 @@ import { createPlayerService } from "../../services/players.services";
 import { uploadImageService } from "../../services/upload.services";
 import { RingLoader } from "react-spinners";
 import styles from "../../css/createPlayer.module.css"
+import style from "../../css/editProfile.module.css"
+import Form from "react-bootstrap/Form"
 
 import { useNavigate } from "react-router-dom";
 
@@ -69,15 +71,20 @@ function CreatePlayer() {
   return (
     <div className={styles.addPlayerFormMain}>
     <div className={styles.addPlayerForm}>
-      <h3>Add a new Player</h3>
+      <h3 className={styles.h3TitleCreatePlayer}>Add a new Player</h3>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <Form.Group className={styles.formProfile} >
         <label htmlFor="name">Name: </label>
         <input type="text" name="name" onChange={handleNameChange} value={playerName} />
+        </Form.Group>
         <br />
+        <Form.Group className={styles.formProfile} >
         <label htmlFor="age">Age: </label>
         <input type="number" name="age" onChange={handleAgeChange} value={playerAge} />
+        </Form.Group>
         <br />
+        <Form.Group className={styles.formProfile} >
         <label htmlFor="position">Position: </label>
         <input
           type="text"
@@ -85,7 +92,9 @@ function CreatePlayer() {
           onChange={handlePositionChange}
           value={playerPosition}
         />
+        </Form.Group>
         <br />
+        <Form.Group className={styles.formProfile} >
         <label htmlFor="skillfulLeg">Skillful Leg: </label>
         <input
           type="text"
@@ -93,7 +102,9 @@ function CreatePlayer() {
           onChange={handleSkillfulLegChange}
           value={playerSkillfulLeg}
         />
+        </Form.Group>
         <br />
+        <Form.Group className={styles.formProfile} >
         <label htmlFor="imageUrl">Image: </label>
         <input
           type="file"
@@ -101,6 +112,7 @@ function CreatePlayer() {
           onChange={handleFileUpload}
           disabled={isUploading}
         />
+        </Form.Group>
         <br />
 
         {isUploading ? <h3>... uploading image</h3> : null}
@@ -109,7 +121,7 @@ function CreatePlayer() {
             <img src={playerImageUrl} alt="img" width={200} />
           </div>
         ) : null}
-
+        <Form.Group className={styles.formProfile} >
         <label htmlFor="currentTeam">Current Team: </label>
         <input
           type="text"
@@ -117,7 +129,9 @@ function CreatePlayer() {
           onChange={handleCurrentTeamChange}
           value={playerCurrentTeam}
         />
+        </Form.Group>
         <br />
+        <Form.Group className={styles.formProfile} >
         <label htmlFor="marketValue">Market Value: </label>
         <input
           type="text"
@@ -125,9 +139,10 @@ function CreatePlayer() {
           onChange={handleMarketValueChange}
           value={playerMarketValue}
         />
+        </Form.Group>
         <br />
 
-        <button className={styles.addBtn} type="submit">Add Here!</button>
+        <button className={style.btnEditProfile} style={{color: "white"}} type="submit">Add Here!</button>
       </form>
     </div>
     </div>

@@ -1,15 +1,96 @@
-.playersList{
-    background-color: #2870d4;
+/* .playersList{
+    /* background-image: url(../../public/images/cesped.webp); }*/
+    
+
+.body {
+    background-image: url(../../public/images/campo2.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.h1Top11 {
+    color: white;
+    font-size: 50px;
+}
+
+.playersList h1{
+    color: #ffffff;
+    font-size: 50px;
     
 }
 
-.playersList h1, h3{
-    color: rgb(102, 12, 12);
-    
+.pFormation {
+    color: white;
+    font-size: 35px;
 }
+
 
 .top11CardContainer {
     display: flex;
     justify-content: center;
     gap: 25px;
 }
+
+.playerListInTop11 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .player-card {
+    margin-left: 10px;
+    flex: 0 0 28%; /* Esto establece que cada tarjeta ocupe un tercio del ancho de su contenedor */
+    gap: 20px;
+  }
+
+  .playerCard {
+    background-image: url(../../public/images/cartatop11.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    height: 40vh;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    justify-content: space-evenly;
+  }
+  
+  .top11Card {
+    border: none;
+    border-radius: none;
+    color: white;
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 5vh;
+    width: 400px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+  }
+
+  .h3NoTop11Card {
+    font-size: 25px;
+  }
+
+  .pNoTop11Card {
+    font-size: 20px;
+  }
+
+  .btnTop11 {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    
+  }
+
+  .btnTop11:hover {
+    color: gold;
+    font-weight: bold;
+    font-size: 21px;
+  }

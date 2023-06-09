@@ -1,7 +1,9 @@
 
 .profile {
    /*  background-color: #e4002b; */
-   background-color: #2870d4;
+    background-image: url(../../public/images/grama3.jpg);
+   /*  background-repeat: no-repeat;
+    background-size: cover; */
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -33,7 +35,7 @@
 }
 
 .username:hover, .editProfileBtn:hover {
-    color: #061934;
+    color: gold;
 }
 
 .h5Profile:hover {
@@ -42,7 +44,7 @@
 }
 
 .h5Profile {
-    color: #061934;
+    color: white;
     display: flex;
     font-size: 30px;
 }
@@ -84,6 +86,6 @@ color: white;
 
 .playerName, .playerImg, .playerAge, .playerLeg, .playerTeam {
     font-size: 20px;
-    color: #061934;
+    color: white;
     opacity: .7;
 }

@@ -19,6 +19,7 @@ import DeletePlayer from './pages/players/DeletePlayer';
 import EditPlayer from './pages/players/EditPlayer';
 import Stadiums from "../src/components/Stadiums"
 import EditProfile from './pages/users/EditProfile';
+import HallOfFame from './components/HallOfFame';
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
     <Route path="/players/:playerId/edit" element={ <IsPrivate> <EditPlayer /> </IsPrivate> } />
     <Route path="/top11/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } />
     <Route path="/stadiums" element={ <IsPrivate> <Stadiums /> </IsPrivate> } />
-    {/* <Route path="/top11/createTop11" element={ <IsPrivate> <Top11Players /> </IsPrivate> } /> */}
+    <Route path="/hallOfFame" element={ <IsPrivate> <HallOfFame /> </IsPrivate> } />
     {/* <Route path="/players/:playerId/like" element={ <IsPrivate> <Details /> </IsPrivate> } />
     <Route path="/players/:playerId/unLike" element={ <IsPrivate> <Details /> </IsPrivate> } /> */}
 

@@ -1,0 +1,30 @@
+.bodyEditProfile {
+   background-image: url(../../public/images/charmander.gif);
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   
+}
+
+.h3Profile {
+    font-size: 50px;
+    padding-bottom: 30px;
+}
+
+.formProfile {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    font-size: 30px;
+}
+
+.btnEditProfile {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 30px;
+}

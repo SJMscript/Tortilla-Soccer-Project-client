@@ -116,19 +116,21 @@ function Top11Players() {
   const renderPlayerListByPosition = (position) => {
     return (
       <div className={styles.playersList}>
-        <h3>{position}s</h3>
+        <h3>{/* {position}s */}</h3>
         <div className="player-list-in-top11">
           {noTop11.map((eachPlayer) => {
             if (eachPlayer.playerPosition === position) {
               return (
-                <div className="player-card" key={eachPlayer._id}>
-                  <h3>
+                <div className={styles.playerCard} key={eachPlayer._id}>
+                    <img src={eachPlayer.imageUrl} alt="image" width={150}/>
+                  <h3 className={styles.h3NoTop11Card}>
+                   
                     {eachPlayer.name}, {eachPlayer.age}
                   </h3>
-                  <p>{eachPlayer.playerPosition}</p>
-                  <p>{eachPlayer.skillfulLeg}</p>
+                  <p className={styles.pNoTop11Card}>{eachPlayer.playerPosition}</p>
+                  <p className={styles.pNoTop11Card} >{eachPlayer.skillfulLeg}</p>
                   {!isPlayerInTop11(eachPlayer) && (
-                    <button onClick={() => addToTop11PlayersList(eachPlayer)}>
+                  <button className={styles.btnTop11} onClick={() => addToTop11PlayersList(eachPlayer)}>
                       Add to Top 11
                     </button>
                   )}
@@ -143,27 +145,28 @@ function Top11Players() {
   };
 
   return (
-    <div className={styles.playersList}>
-      <h1>Our 11 chosen</h1>
+    <div className={styles.body}>
+      <h1 className={styles.h1Top11}>TOP 11</h1>
       <br />
-      <p>Formation 1-4-3-3</p>
+      <p className={styles.pFormation}>Formation 1 4 3 3</p>
       <br />
-      <div>
-        <h3>Goalkeepers</h3>
+      <div className={styles.playersList}>
+        <h3>{/* Goalkeepers */}</h3>
+        <br />
         <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'goalkeeper') {
               return (
-                <div className="top11-card" key={eachPlayer._id}>
+                <div className={styles.top11Card} key={eachPlayer._id}>
                   <li>
                     <h3>{eachPlayer.player.name}</h3>
                     {eachPlayer.player.imageUrl && (
                       <div>
-                        <img src={eachPlayer.player.imageUrl} alt="Player" width={200} />
+                        <img src={eachPlayer.player.imageUrl} alt="Player" width={200}/>
                       </div>
                     )}
                     <p>{eachPlayer.player.playerPosition}</p>
-                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                    <button className={styles.btnTop11} onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
                       Remove from Top 11
                     </button>
                   </li>
@@ -176,12 +179,13 @@ function Top11Players() {
       </div>
 
       <div>
-        <h3>Defenses</h3>
+        <h3>{/* Defenses */}</h3>
+        <br />
         <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'defense') {
               return (
-                <div className="top11-card" key={eachPlayer._id}>
+                <div className={styles.top11Card} key={eachPlayer._id}>
                   <li>
                     <h3>{eachPlayer.player.name}</h3>
                     {eachPlayer.player.imageUrl && (
@@ -190,7 +194,7 @@ function Top11Players() {
                       </div>
                     )}
                     <p>{eachPlayer.player.playerPosition}</p>
-                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                    <button className={styles.btnTop11} onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
                       Remove from Top 11
                     </button>
                   </li>
@@ -203,12 +207,13 @@ function Top11Players() {
       </div>
 
       <div>
-        <h3>Midfielders</h3>
+        <h3>{/* Midfielders */}</h3>
+        <br />
         <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'midfielder') {
               return (
-                <div className="top11-card" key={eachPlayer._id}>
+                <div className={styles.top11Card} key={eachPlayer._id}>
                   <li>
                     <h3>{eachPlayer.player.name}</h3>
                     {eachPlayer.player.imageUrl && (
@@ -217,7 +222,7 @@ function Top11Players() {
                       </div>
                     )}
                     <p>{eachPlayer.player.playerPosition}</p>
-                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                    <button className={styles.btnTop11} onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
                       Remove from Top 11
                     </button>
                   </li>
@@ -230,12 +235,13 @@ function Top11Players() {
       </div>
 
       <div>
-        <h3>Forwards</h3>
+        <h3>{/* Forwards */}</h3>
+        <br />
         <div className={styles.top11CardContainer}>
           {top11PlayersList.map((eachPlayer) => {
             if (eachPlayer.player.playerPosition === 'forward') {
               return (
-                <div className="top11-card" key={eachPlayer._id}>
+                <div className={styles.top11Card} key={eachPlayer._id}>
                   <li>
                     <h3>{eachPlayer.player.name}</h3>
                     {eachPlayer.player.imageUrl && (
@@ -244,7 +250,7 @@ function Top11Players() {
                       </div>
                     )}
                     <p>{eachPlayer.player.playerPosition}</p>
-                    <button onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
+                    <button className={styles.btnTop11} onClick={() => removeFromTop11PlayersList(eachPlayer.player._id)}>
                       Remove from Top 11
                     </button>
                   </li>

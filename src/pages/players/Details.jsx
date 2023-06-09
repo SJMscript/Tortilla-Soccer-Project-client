@@ -4,7 +4,8 @@ import { addCommentService, deleteCommentService } from "../../services/players.
 import { useParams, useNavigate } from "react-router-dom";
 import { getPlayerCommentsService } from "../../services/players.services";
 import { AuthContext } from "../../context/auth.context";
-import { getUserRoleService } from "../../services/profile.services"; // Agregado: Importar getUserRoleService
+import { getUserRoleService } from "../../services/profile.services"; 
+import styles from "../../css/details.module.css"
 
 function Details() {
   const [playerDetails, setPlayerDetails] = useState(null);
@@ -84,17 +85,17 @@ function Details() {
   }
 
   return (
-    <div>
-      <h1>Player Details</h1>
+    <div className={styles.bodyDetails}>
+      <h1 className={styles.h1Details} >Player Details</h1>
 
       {playerDetails ? (
         <div>
-          <h4>{playerDetails.name}, {playerDetails.age}</h4>
-          <p>Current Team: {playerDetails.currentTeam}</p>
-          <p>Skillful Leg: {playerDetails.skillfulLeg}</p>
+          <h4 className={styles.h4Details} >{playerDetails.name}, {playerDetails.age}</h4>
+          <p className={styles.pDetails} >Current Team: {playerDetails.currentTeam}</p>
+          <p className={styles.pDetails} >Skillful Leg: {playerDetails.skillfulLeg}</p>
           {playerDetails.imageUrl && (
             <div>
-              <img src={playerDetails.imageUrl} alt="Player" width={200} />
+              <img className={styles.imgDetails} src={playerDetails.imageUrl} alt="Player" width={200} />
             </div>
           )}
         </div>
@@ -103,39 +104,39 @@ function Details() {
       )}
 
       <form onSubmit={submitComment}>
-        <textarea
+        <textarea className={styles.textareaDetails}
           value={comment}
           onChange={handleCommentChange}
           placeholder="Escribe tu comentario aquí"
         ></textarea>
-        <button type="submit">Comment</button>
+        <button className={styles.btnDetails} type="submit">Comment</button>
       </form>
 
       <div className="all-comments-div">
         <h3>Comments:</h3>
-        <hr />
+        <hr className={styles.hrDetails} />
         {comments.length > 0 ? (
-          <ul>
+          <ul className={styles.ulLiDetails} >
             {comments.map((comment) => (
-              <li key={comment._id}>
-                <p>Username: {comment.creator.username}</p>
-                <p>Comment: {comment.content}</p>
+              <li className={styles.ulLiDetails} key={comment._id}>
+                <p className={styles.pDetails} >Username: {comment.creator.username}</p>
+                <p className={styles.pDetails} >Comment: {comment.content}</p>
                 {comment.creator._id === userId || userRole === "moderator" ? ( // Actualizado: Permitir que el moderador elimine todos los comentarios
-                  <button onClick={() => deleteComment(comment._id)}>Delete</button>
+                  <button className={styles.btnDetails} onClick={() => deleteComment(comment._id)}>Delete</button>
                 ) : null}
-                <hr />
+                <hr className={styles.hrDetails} />
               </li>
             ))}
           </ul>
         ) : (
-          <p>No comments yet.</p>
+          <p className={styles.pDetails} >No comments yet.</p>
         )}
       </div>
 
       {userRole === "moderator" && ( // Actualizado: Mostrar los botones de edición y eliminación solo para los moderadores
         <div>
-          <button onClick={handleEditPlayer}>Edit Player</button>
-          <button onClick={handleDeletePlayer}>Delete Player</button>
+          <button className={styles.btnDetails} onClick={handleEditPlayer}>Edit Player</button>
+          <button className={styles.btnDetails} onClick={handleDeletePlayer}>Delete Player</button>
         </div>
       )}
     </div>

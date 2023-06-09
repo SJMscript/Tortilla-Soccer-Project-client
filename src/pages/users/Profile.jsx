@@ -43,7 +43,7 @@
      <div className={styles.profile}>
       <div className={styles.profileData}>
        <img className={styles.profileImage} 
-         src={profile.profileImg || "/images/perfil2.png"}
+         src={profile.profileImg || "/images/tortilla_futbol.png"}
          alt="profileImg"
          width={300}
        />

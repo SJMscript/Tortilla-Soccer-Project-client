@@ -15,18 +15,7 @@ a {
   text-decoration: none
 }
 
-/* Estilos para los jugadores */
-.player-card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 300px;
-  background-color: #f1f1f1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 .player-card h5 {
   margin-bottom: 5px;
@@ -50,17 +39,7 @@ a {
 }
 
 /* Estilos para los top 11 jugadores */
-.top11-card {
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 300px;
-  background-color: gray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 .top11-card li {
   list-style: none;
@@ -112,9 +91,9 @@ a {
 .all-comments-div {
   margin-left: 100px;
   margin-top: 30px;
-  border: 2px red solid ;
-  border-radius: 20px;
-  box-shadow: 10px 10px 5px 0px rgba(255,0,21,1);
+  /* border: 2px red solid ; */
+  /* border-radius: 20px; */
+  /* box-shadow: 10px 10px 5px 0px rgba(255,0,21,1); */
   width: 60%;
 }
 
@@ -141,14 +120,6 @@ a {
   justify-content: center; 
 } */
 
-.each-player-in-list {
-  margin: 10px;
-  padding: 10px;
-  border: 2px grey solid;
-  border-radius: 20px;
-  flex: 0 0 calc(28% - 20px);
-  list-style-type: none;
-}
 
 .each-player-in-list h3 {
   text-decoration: none; 

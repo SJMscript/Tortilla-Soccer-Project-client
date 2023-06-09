@@ -1,5 +1,10 @@
+@import '~react-responsive-carousel/lib/styles/carousel.min.css';
+
 .main{
-    background-color: #2870d4;
+    /* background-color: white; */
+    background-image: url(../../public/images/cesped.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     margin: 0;
     display: flex;
@@ -8,16 +13,44 @@
     flex-wrap: wrap;
     align-items: s;
     padding: 0;
+    color: white;
+    font-size: 20px;
 }
 
-.main h3 {
-    color: rgb(102, 12, 12);
+.h3TitleList {
+    color: white;
     font-size: 2em;
-    
+    display: flex;
+    align-items: center; 
+    padding-left: 85vh;
+ 
 }
 
 .playerList{
   display: flex;
   flex-wrap: wrap;
   justify-content: center; 
+  align-items: center;
+}
+
+.eachPlayerInList {
+  flex: 0 0 calc(28% - 20px);
+  list-style-type: none;
+  padding-bottom: 3vh;
+  padding-left: 3vh;
+}
+
+.eachPlayerInList img {
+  max-width: 220px;
+}
+
+.playerListName {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+
+}
+
+.playerListName:hover {
+  color: gold;
 }
