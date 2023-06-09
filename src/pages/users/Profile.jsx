@@ -66,8 +66,8 @@
              <img className={styles.playerImg}
                src={player.imageUrl}
                alt="playerImg"
-               width={250}
-               height={200}
+               /* width={350}
+               height={200} */
              />
              <br />
              <p className={styles.playerTeam} >Team: {player.currentTeam}</p>
